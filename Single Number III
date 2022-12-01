@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums)
+    {
+        long bit=0;
+        for(int i=0;i<nums.size();i++)
+            bit=bit^nums[i];   
+        
+        long diff=bit&(-bit);
+            int x=0;
+        for(auto i:nums)
+        {
+            if((i &diff)!=0)
+                x^=i;
+            
+        }
+       return {x,(int)bit^x}; 
+    }
+};
